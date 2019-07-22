@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import { $apis } from './helper'
 import './registerServiceWorker'
 
+Vue.prototype.$apis = $apis
 Vue.config.productionTip = false
 
 new Vue({
