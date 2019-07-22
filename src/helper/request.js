@@ -13,25 +13,24 @@ function requrestHandle(options = {}) {
     //     }
     // }
     axios(options)
-        .then(
-            // const data = res.data;
-            // if (res.status === 200) {
-            //     const data = res.data;
-            //     if (data.code === 0 || data.code === undefined || data.code === 100) {
-            //         defer.resolve(data);
-            //     } else if (data.code === 401) {
-            //         router.replace({ name: 'home' })
-            //         defer.reject(data);
-            //     } else {
-            //         defer.reject(data);
-            //     }
-            // } else if (res.status === 401) {
-            //     router.replace({ name: 'home' })
-            //     defer.reject(data);
-            // } else {
-            //     defer.reject({ message: '服务器发生错误，请稍后再试' });
-            // }
-        )
+        .then(res => {
+            const data = res.data;
+            if (res.status === 200) {
+                if (data.code === 0 || data.code === undefined || data.code === 100) {
+                    defer.resolve(data);
+                } else if (data.code === 401) {
+                    router.replace({ name: 'home' });
+                    defer.reject(data);
+                } else {
+                    defer.reject(data);
+                }
+            } else if (res.status === 401) {
+                router.replace({ name: 'home' })
+                defer.reject(data);
+            } else {
+                defer.reject({ message: '服务器发生错误，请稍后再试' });
+            }
+        })
         .catch(err => {
             if (err.response.status === 401) {
                 router.replace({ name: 'home' })

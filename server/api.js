@@ -1,7 +1,7 @@
 let fs = require('fs');
 
 exports.message = function (req, res) {
-    fs.readFile('./data.json', 'utf8', function (err, data) {
+    fs.readFile(__dirname + '/data.json', 'utf8', function (err, data) {
         if (err) return console.error(err);
         data = JSON.parse(data);
         res.json({ data });
@@ -9,7 +9,7 @@ exports.message = function (req, res) {
 }
 
 exports.query = function (req, res) {
-    fs.readFile('./data.json', 'utf8', function (err, data) {
+    fs.readFile(__dirname + '/data.json', 'utf8', function (err, data) {
         if (err) return console.error(err);
         data = JSON.parse(data);
         let person = data.data;

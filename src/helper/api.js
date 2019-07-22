@@ -6,7 +6,7 @@ export default {
     // 获取数据
     getMessage(params = {}) {
         return $request.get(
-            `${BASEURL}${BASEPATH}/message`,
+            `${BASEURL}${BASEPATH}/messag`,
             params
         )
     },
